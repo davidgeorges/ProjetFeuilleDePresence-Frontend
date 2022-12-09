@@ -1,0 +1,33 @@
+.mainBodyStudent {
+    height: 68vh;
+    display: flex;
+    justify-content: center;
+    padding-top: 1vh;
+}
+
+.firstName{
+    min-width: 100px;
+    }
+
+.lastName{
+    min-width: 100px;
+}
+
+.email{
+    min-width: 225px
+}
+
+.studentTable{
+    width: 40%!important;
+    height: 15%!important;
+}
+
+.titleStudent{
+    height: 5vh;
+    font-size: 24px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    padding-top: 2vh;
+
+}

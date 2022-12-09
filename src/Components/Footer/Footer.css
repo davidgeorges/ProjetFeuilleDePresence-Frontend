@@ -1,0 +1,47 @@
+.footer {
+  display: flex;
+  flex-direction: row;
+  height: 12.5vh;
+  border-top: 2px solid #3C4444;;
+
+}
+
+.textChoiceFooter {
+  color: #3D4543;
+  align-self: center;
+  margin-left: 5%;
+  font-size: 24px;
+}
+.infoFooter {
+  color: #3D4543;
+  align-self: center;
+  margin-left: 5%;
+  font-size: 24px;
+  font-weight: bold;
+}
+  
+
+@media (max-width: 425px){
+
+  .textChoiceFooter {
+    font-size: 22px;
+  }
+
+  .infoFooter {
+    font-size: 22px;
+  }
+ 
+}
+
+@media (max-width: 320px) {
+
+  .textChoiceFooter {
+    font-size: 20px;
+  }
+
+  .infoFooter {
+    font-size: 20px;
+  }
+
+
+}

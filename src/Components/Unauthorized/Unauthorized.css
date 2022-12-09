@@ -1,0 +1,11 @@
+.mainBody {
+  height: 75vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.errorMessage{
+  color: red;
+  font-size: 24px;
+}

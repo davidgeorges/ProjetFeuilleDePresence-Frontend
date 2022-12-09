@@ -1,0 +1,106 @@
+body {
+    margin: 0px;
+    padding: 0px;
+}
+
+.mainBody {
+    height: 75vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.loginWindow {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 470px;
+    height: 546px;
+    background: #FFFFFF;
+    border: 1px solid #000000;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.connectionLogin {
+    font-size: 24px;
+    color: #3D4543;
+    margin-top: 50px;
+}
+
+.mailInputLogin {
+    width: 35vh;
+    margin-top: 15px!important;
+}
+
+.passwordInputLogin {
+    width: 35vh;
+}
+
+.forgotPasswordLogin{
+    margin-top: 50px!important;
+    border-bottom: 0.5px solid #3C4444;;
+}
+
+
+.createAccountLogin{
+    border-bottom: 0.5px solid #3C4444;;
+    margin-top: -2px
+}
+
+.buttonLogin{
+    margin-top: 10px!important;
+    width: 250px;
+    background-color : #3C4444!important;
+}
+
+.errorMessageLogin{
+    margin-top: 7px;
+    align-self: flex-start;
+    color: red;
+}
+
+.passwordMessage{
+    max-width: 35vh;
+}
+
+
+@media (max-width: 425px){
+    .loginWindow {
+        width: 330px;
+        height: 476px;
+    }
+
+    .mailInputLogin {
+        width: 30vh;
+    }
+    
+    .passwordInputLogin {
+        width: 30vh;
+    }
+    .buttonLogin{
+        width: 25vh;
+    }
+
+    .forgotPasswordLogin{
+        margin-top: 25px!important;
+    }
+}
+
+@media (max-width: 320px){
+    .loginWindow {
+        width: 280px;
+        height: 476px;
+    }
+
+    .mailInputLogin {
+        width: 25vh;
+    }
+    
+    .passwordInputLogin {
+        width: 25vh;
+    }
+    .buttonLogin{
+        width: 20vh;
+    }
+
+}
