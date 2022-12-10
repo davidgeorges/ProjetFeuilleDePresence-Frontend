@@ -22,7 +22,6 @@ const useAxiosPrivate = () => {
                 return response;
             },
             (async (error) => {
-                console.log(error.response.data.message);
                 const previousRequest = error.config;
                 if (error.response.status === 401 && !previousRequest.sent) {
                     switch (error.response.data.message) {
@@ -35,16 +34,13 @@ const useAxiosPrivate = () => {
                         case "Error refresh_token expired.":
                         case "No access - Missing refresh_token.":
                             await logout();
-                            break;
+                            return Promise.reject(error)
                         default:
                             break;
                     }
                 } else {
                     return Promise.reject(error)
                 }
-
-
-
             })
         );
 

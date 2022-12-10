@@ -1,7 +1,4 @@
-import cookies from "js-cookies";
 import axios from "axios";
-
-
 
 export const refreshToken = async () => {
     return new Promise(async (resolve, reject) => {
@@ -16,7 +13,6 @@ export const refreshToken = async () => {
             reject(error);
             
         }
-
 
     });
 }
