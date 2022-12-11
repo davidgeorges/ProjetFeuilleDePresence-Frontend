@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
-//import { useNavigate } from 'react-router-dom'
 import "./Teacher.css"
 import StudentList from "../../Components/StudentList/StudentList";
-//import Loading from "../../Components/Loading/Loading";
 import useAxiosPrivate from "../../Hooks/useAxiosPrivate";
 
 

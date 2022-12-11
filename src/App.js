@@ -3,7 +3,6 @@ import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
 import Layout from "./Components/Layout/Layout"
 import Login from "./Pages/Login/Login"
 import ValidateToken from "./Pages/ValidateToken/ValidateToken";
-import SuccessValidation from "./Pages/SuccessValidation/SuccessValidation";
 import Teacher from "./Pages/Teacher/Teacher";
 import Admin from "./Pages/Admin/Admin";
 import RequireAuth from "./Components/RequireAuth/RequireAuth";
@@ -76,7 +75,6 @@ function App() {
         {/* student pages */}
         <Route element={<RequireAuth allowedRoles={[ROLES.student]} />}>
           <Route path="/student" element={<ValidateToken />} />
-          <Route path="/successValidation" element={<SuccessValidation />} />
         </Route>
 
         {/* admin page */}

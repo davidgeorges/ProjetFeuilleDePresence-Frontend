@@ -24,7 +24,7 @@ const useAxiosPrivate = () => {
             (async (error) => {
                 const previousRequest = error.config;
                 if (error.response.status === 401 && !previousRequest.sent) {
-                    switch (error.response.data.message) {
+                    switch (error.response.data) {
                         case "Error access_token expired.":
                         case "No access - Missing access_token.":
                             await refresh();
@@ -33,6 +33,7 @@ const useAxiosPrivate = () => {
                             return axiosPrivate(previousRequest);
                         case "Error refresh_token expired.":
                         case "No access - Missing refresh_token.":
+                        case "Error no user with this refresh_token in the database.":
                             await logout();
                             return Promise.reject(error)
                         default:

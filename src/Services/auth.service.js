@@ -49,7 +49,7 @@ export const login = async (loginReceive) => {
                 if(err.message === 'Network Error'){
                     error.message = "Error with the API while trying to connect.";
                 }else{
-                    error.message = err.response.data.message;
+                    error.message = err.response.data;
                 }
                 reject(error);
             }
@@ -77,7 +77,7 @@ export const logout = async () => {
             if (err.message === 'Network Error') {
                 error.message = "Error with the API while trying to disconnect.";
             } else {
-                error.message = err.response.data.message;
+                error.message = err.response.data;
             }
             reject(error);
         }

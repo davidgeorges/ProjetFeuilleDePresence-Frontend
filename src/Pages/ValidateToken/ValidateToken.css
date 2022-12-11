@@ -33,16 +33,23 @@ body {
 
 
 .buttonToken{
-    margin-top: 10px!important;
+    margin-top: 1.5vh!important;
     width: 250px;
     background-color : #3C4444!important;
 }
 
 .errorMessageValidateToken{
-    margin-top: 7px;
+    margin-top: 0.5vh;
     align-self: flex-start;
     color: red;
 }
+
+.messageValidateToken{
+    margin-top: 0.5vh;
+    align-self: flex-start;
+    color: green;
+}
+
 
 @media (max-width: 425px){
 

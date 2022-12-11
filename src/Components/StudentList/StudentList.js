@@ -3,6 +3,7 @@ import Header from "../../Components/Header/Header";
 import Footer from "../../Components/Footer/Footer";
 import Table from 'react-bootstrap/Table';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import DownloadIcon from '@mui/icons-material/Download';
 
 const StudentList = (props) => {
 
@@ -25,7 +26,10 @@ const StudentList = (props) => {
 
     return (
         <div> <Header />
+            <div className='h'>
             <p className='titleStudent'>FICHE DE PRESENCE</p>
+            <DownloadIcon/>
+            </div>
             <div className="mainBodyStudent">
                 <Table striped bordered hover className='studentTable'>
                     <thead>
