@@ -11,14 +11,32 @@
   align-self: center;
 }
 
+.disconnectLogo {
+  align-self: center;
+  margin-left: auto;
+  margin-right: 80px;
+}
+
+@media (max-width: 768px) {
+  .disconnectLogo {
+    margin-right: 60px;
+  }
+}
+
 @media (max-width: 425px) {
   .cyLogoHeader {
     height: 8vh;
+  }
+  .disconnectLogo {
+    margin-right: 50px;
   }
 }
 
 @media (max-width: 320px) {
   .cyLogoHeader {
     height: 7vh;
+  }
+  .disconnectLogo {
+    margin-right: 30px;
   }
 }

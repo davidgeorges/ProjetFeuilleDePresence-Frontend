@@ -38,7 +38,6 @@ function App() {
             role: [res.data.role]
           })
           setIsConnected(true);
-          console.log(from);
           if(from === undefined || from === "/"){
             navigate(res.data.role)
           }else{
