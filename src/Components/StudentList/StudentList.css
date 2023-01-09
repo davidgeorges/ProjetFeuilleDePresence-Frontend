@@ -40,3 +40,13 @@
     justify-content: center!important;
     align-items: center!important;
 }
+
+
+.message{
+    display: flex;
+    font-size: 25px;
+    justify-content: center!important;
+    align-items: center!important;
+    margin-top: -70px;
+    color: red;
+}

@@ -14,10 +14,11 @@ import useAxiosPrivate from "../../Hooks/useAxiosPrivate";
 const StudentList = () => {
 
     const [date, setDate] = useState('');
+    const [message, setMessage] = useState('');
+    const [promoName, setPromoName] = useState('');
     const [dateList, setDateList] = useState([]);
-    const [isLoading, setIsLoading] = useState(true);
     const [studentList, setStudentList] = useState([]);
-    const [promoName,setPromoName] = useState('');
+    const [isLoading, setIsLoading] = useState(true);
     const axiosPrivate = useAxiosPrivate();
 
     const handleChange = async (event) => {
@@ -52,15 +53,21 @@ const StudentList = () => {
         const getDateList = async () => {
             try {
                 const resWeekday = await axiosPrivate.get("api/teacher/getWeekday");
-                setDateList(resWeekday.data)
-                setDate(resWeekday.data[resWeekday.data.length - 1])
-                const resStudentList = await axiosPrivate.get(`api/teacher/getAllPromo/${resWeekday.data[resWeekday.data.length - 1]}`);
-                setStudentList(resStudentList.data)
+                console.log(resWeekday.data.message );
+                if (resWeekday.data.message !== "You cannot access this view on weekends.") {
+                    setDateList(resWeekday.data)
+                    setDate(resWeekday.data[resWeekday.data.length - 1])
+                    const resStudentList = await axiosPrivate.get(`api/teacher/getAllPromo/${resWeekday.data[resWeekday.data.length - 1]}`);
+                    setStudentList(resStudentList.data)
+                }else{
+                    setMessage(resWeekday.data.message)
+                }
                 const resPromoName = await axiosPrivate.get(`api/teacher/getPromoName`);
                 setPromoName(resPromoName.data)
                 setIsLoading(false)
             } catch (error) {
-                console.log(error);
+                setMessage(error.response.data)
+                setIsLoading(false)
             }
         }
         getDateList();
@@ -82,21 +89,21 @@ const StudentList = () => {
                         {getDateListMenu()}
                     </Select>
                 </FormControl> : null}
-                <DownloadIcon onClick={async () => {
+                {studentList.length >0 ? <DownloadIcon onClick={async () => {
                     try {
-                        const res = await axiosPrivate.get(`api/teacher/download/summary/${date}`,{responseType: 'blob'});
+                        const res = await axiosPrivate.get(`api/teacher/download/summary/${date}`, { responseType: 'blob' });
                         var url = window.URL.createObjectURL(res.data)
                         var dlFile = document.createElement('a')
                         dlFile.href = url
-                        dlFile.download = date+'-'+promoName
+                        dlFile.download = date + '-' + promoName + '.pdf'
                         dlFile.click()
                     } catch (error) {
                         console.log(error);
                     }
-                }} />
+                }} /> : null}
             </div>
             <div className="mainBodyStudent">
-                {isLoading ? <p>loading</p> : <Table striped bordered hover className='studentTable'>
+                {isLoading ? <p>loading</p> : message.length > 0 ? <p className='message'>{message}</p> : <Table striped bordered hover className='studentTable'>
                     <thead>
                         <tr>
                             <th className='firstName' >First Name</th>

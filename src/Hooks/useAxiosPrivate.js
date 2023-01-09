@@ -23,21 +23,18 @@ const useAxiosPrivate = () => {
             },
             (async (error) => {
                 const previousRequest = error.config;
-                if (error.response.status === 401 && !previousRequest.sent) {
+                if (error.response.status === 401 && !previousRequest.sent && error.response.data !== "Wrong credentials.") {
                     switch (error.response.data) {
-                        case "Error access_token expired.":
-                        case "No access - Missing access_token.":
-                            await refresh();
-                            previousRequest.sent = true;
-                            previousRequest.headers = { ...previousRequest.headers };
-                            return axiosPrivate(previousRequest);
                         case "Error refresh_token expired.":
                         case "No access - Missing refresh_token.":
                         case "Error no user with this refresh_token in the database.":
                             await logout();
                             return Promise.reject(error)
                         default:
-                            break;
+                            await refresh();
+                            previousRequest.sent = true;
+                            previousRequest.headers = { ...previousRequest.headers };
+                            return axiosPrivate(previousRequest);
                     }
                 } else {
                     return Promise.reject(error)
