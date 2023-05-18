@@ -49,7 +49,7 @@ const Login = () => {
                     </div>
 
                     <p className="forgotPasswordLogin">Forgot your password ?</p>
-                    <p className="createAccountLogin">Create an account ?</p>
+
                     <Button variant="contained" className="buttonLogin" onClick={async () => {
 
                         

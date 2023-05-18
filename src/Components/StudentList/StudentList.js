@@ -53,14 +53,13 @@ const StudentList = () => {
         const getDateList = async () => {
             try {
                 const resWeekday = await axiosPrivate.get("api/teacher/getWeekday");
-                console.log(resWeekday.data.message );
-                if (resWeekday.data.message !== "You cannot access this view on weekends.") {
+                if (!resWeekday.data.includes("weekends")) {
                     setDateList(resWeekday.data)
                     setDate(resWeekday.data[resWeekday.data.length - 1])
                     const resStudentList = await axiosPrivate.get(`api/teacher/getAllPromo/${resWeekday.data[resWeekday.data.length - 1]}`);
                     setStudentList(resStudentList.data)
                 }else{
-                    setMessage(resWeekday.data.message)
+                    setMessage("You cannot access this view on weekends.")
                 }
                 const resPromoName = await axiosPrivate.get(`api/teacher/getPromoName`);
                 setPromoName(resPromoName.data)

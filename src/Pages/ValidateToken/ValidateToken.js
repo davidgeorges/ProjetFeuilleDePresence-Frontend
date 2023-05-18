@@ -25,20 +25,12 @@ const ValidateToken = () => {
                 setDailyToken(null)
             }
             const res = await axiosPrivate.get(`api/student/setMyStatus/${dailyToken}`);
-            if(res.status === 202){
-                setMessage(res.data)
-            }else{
-                if(message.length >0){
-                    setMessage("")
-                }
-                setMessage("You have declared your presence with success")
-            }
+            setMessage("You have declared your presence with success");
         } catch (error) {
-            console.log(error);
-            if (error.message === "Network") {
-                setMessage( "Error with the API while trying get teacher promo.");
+            if (error.message === "Network Error") {
+                setMessage( "Error with the API.");
             } else {
-                setMessage(error.message);
+                setMessage(error?.response?.data);
             }
         }
         finally{
@@ -52,9 +44,8 @@ const ValidateToken = () => {
         <div>
 
             <Header/>
-
+            
             <div className="mainBody">
-
                 <div className="ValidateTokenWindow">
 
                     <p className="tokenText">Token</p>

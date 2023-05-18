@@ -23,7 +23,7 @@ const useAxiosPrivate = () => {
             },
             (async (error) => {
                 const previousRequest = error.config;
-                if (error.response.status === 401 && !previousRequest.sent && error.response.data !== "Wrong credentials.") {
+                if (error?.response?.status === 401 && !previousRequest.sent && error?.response?.data !== "Wrong credentials.") {
                     switch (error.response.data) {
                         case "Error refresh_token expired.":
                         case "No access - Missing refresh_token.":
